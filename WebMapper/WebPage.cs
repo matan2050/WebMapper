@@ -11,14 +11,11 @@ namespace WebMapper
 	{
 		private		string			m_Url;
 		private		string			m_Contents;
-		private     List<string>    m_Links;
 
 		public WebPage(string url)
 		{
 			m_Url		= url;
 			m_Contents	= null;
-			m_Links = null;
-
 		}
 
 		public void ReadContents()
@@ -32,6 +29,11 @@ namespace WebMapper
 				request.Method = "GET";
 
 				response = request.GetResponse();
+
+				if (response == null)
+				{
+					return;
+				}
 
 				reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
 				m_Contents = reader.ReadToEnd();
@@ -53,6 +55,7 @@ namespace WebMapper
 			}
 		}
 
+		// !!! GIVE THE CLASS A LINK LIST MEMBER !!!
 		public List<string> GetLinks()
 		{
 			List<string> links = new List<string>();
@@ -99,10 +102,13 @@ namespace WebMapper
 					inLink = false;
 					string linkToAdd = currentLink.ToString();
 
-					if (!currentLink.ToString().Contains("http"))
+					// link notation fix
+					if (!linkToAdd.Contains("http"))
 					{
 						linkToAdd = m_Url + linkToAdd;
 					}
+
+					//if (linkString.Contains
 
 					links.Add(linkToAdd);
 					currentLink.Clear();
