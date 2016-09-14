@@ -17,5 +17,10 @@ namespace DataTypes.TreeObject
 		{
 			m_Children.Add(childNode);
 		}
+
+		public T Data()
+		{
+			return m_Data;
+		}
 	}
 }
