@@ -42,7 +42,8 @@ namespace WebMapper
 			page.ReadContents();
 			page.GetLinks();
 
-			Node<string> webTree = RecursiveLinkTreeBuilder.BuildTree("http://wwww.facebook.com", 3);
+			Node<string> webTree = RecursiveLinkTreeBuilder.BuildTree("http://wwww.facebook.com", 1);
+			Console.WriteLine("");
 		}
 	}
 }

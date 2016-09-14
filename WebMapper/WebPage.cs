@@ -38,9 +38,9 @@ namespace WebMapper
 				reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
 				m_Contents = reader.ReadToEnd();
 			}
-			catch (Exception ex)
+			catch
 			{
-				throw new Exception(ex.Message);
+				m_Contents = string.Empty;
 			}
 			finally
 			{

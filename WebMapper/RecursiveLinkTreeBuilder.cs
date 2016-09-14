@@ -19,6 +19,7 @@ namespace WebMapper
 
 			if (levelsDown == 0)
 			{
+				Console.WriteLine("link: {0}", currentNode.Data().ToString());
 				return currentNode;
 			}
 
