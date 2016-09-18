@@ -9,13 +9,13 @@ namespace WebMapper
 {
 	public static class RecursiveLinkTreeBuilder
 	{
-		public static Node<string> BuildTree(string url, uint levelsDown)
+		public static TreeNode<string> BuildTree(string url, uint levelsDown)
 		{
 			WebPage currentPage = new WebPage(url);
 			currentPage.ReadContents();
 			List<string> currentLinks = currentPage.GetLinks();
 
-			Node<string> currentNode = new Node<string>(url);
+			TreeNode<string> currentNode = new TreeNode<string>(url);
 
 			if (levelsDown == 0)
 			{
@@ -27,7 +27,7 @@ namespace WebMapper
 					linkIndex < currentLinks.Count; 
 						linkIndex++)
 			{
-				Node<string> lowerLevelLinks = BuildTree(currentLinks[linkIndex], levelsDown - 1);
+				TreeNode<string> lowerLevelLinks = BuildTree(currentLinks[linkIndex], levelsDown - 1);
 				currentNode.AddChild(lowerLevelLinks);
 			}
 

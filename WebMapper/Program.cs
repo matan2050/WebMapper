@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using DataTypes.TreeObject;
 
 
@@ -13,17 +14,17 @@ namespace WebMapper
 		static void Main(string[] args)
 		{
 			// testing tree creation 
-			Node<int> el1 = new Node<int>(1);
+			TreeNode<int> el1 = new TreeNode<int>(1);
 
-			Node<int> el2 = new Node<int>(10);
-			Node<int> el3 = new Node<int>(11);
-			Node<int> el4 = new Node<int>(12);
+			TreeNode<int> el2 = new TreeNode<int>(10);
+			TreeNode<int> el3 = new TreeNode<int>(11);
+			TreeNode<int> el4 = new TreeNode<int>(12);
 
-			Node<int> el5 = new Node<int>(100);
-			Node<int> el6 = new Node<int>(101);
-			Node<int> el7 = new Node<int>(102);
+			TreeNode<int> el5 = new TreeNode<int>(100);
+			TreeNode<int> el6 = new TreeNode<int>(101);
+			TreeNode<int> el7 = new TreeNode<int>(102);
 
-			Node<int> el8 = new Node<int>(120);
+			TreeNode<int> el8 = new TreeNode<int>(120);
 
 			el4.AddChild(el8);
 
@@ -35,14 +36,13 @@ namespace WebMapper
 			el1.AddChild(el3);
 			el1.AddChild(el4);
 
-			Tree<int> tree = new Tree<int>(el1);
 			//
 
 			WebPage page = new WebPage("http://wwww.facebook.com");
 			page.ReadContents();
 			page.GetLinks();
 
-			Node<string> webTree = RecursiveLinkTreeBuilder.BuildTree("http://wwww.facebook.com", 1);
+			TreeNode<string> webTree = RecursiveLinkTreeBuilder.BuildTree("http://wwww.facebook.com", 1);
 			Console.WriteLine("");
 		}
 	}

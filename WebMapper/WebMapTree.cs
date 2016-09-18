@@ -9,6 +9,6 @@ namespace WebMapper
 {
 	public class WebMapTree
 	{
-		private Tree<string> m_LinksTree;
+		private TreeNode<string> m_LinksTree;
 	}
 }
